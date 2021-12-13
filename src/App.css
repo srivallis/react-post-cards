@@ -1,0 +1,78 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim {
+    animation: 1s in-out linear;
+  }
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.msg-box {
+  background-attachment: local;
+  background-image: linear-gradient(to right,#ffff,#ffff 10px,transparent 10px),linear-gradient(to left,#ffff,#ffff 10px,transparent 10px),repeating-linear-gradient(#ffff,#ffff 38px,#DBDDE0 38px,#DBDDE0 40px);
+}
+
+.front-post {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.back-post {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.font-grotesk {
+  font-family: neue-haas-grotesk-display, sans-serif;
+}
+
+.aspect-ratio-square {
+  aspect-ratio: 1/1;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes in-out {
+  0% {
+      opacity: 0;
+      transform: scale(0.9)
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1.0)
+  }
+}
+

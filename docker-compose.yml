@@ -1,0 +1,23 @@
+services:
+  server:
+    build:
+      context: .
+      target: production
+    image: wish-cards
+    volumes:
+      - .:/wish-cards
+      - /wish-cards/node_modules
+    stdin_open: true
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    volumes:
+      - .data:/data/db
+    ports:
+      - "27017:27017"

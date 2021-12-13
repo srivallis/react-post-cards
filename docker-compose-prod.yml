@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+    image: wish-card-server
+    container_name: wish-card-server
+    volumes:
+      - ./server/:/server
+      - /server/node_modules
+    environment:
+      NODE_ENV: production
+      PORT: 4001
+    ports:
+      - "4001:4001"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+  mongo:
+    image: mongo
+    container_name: mongo-database
+    volumes:
+      - .data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+  client:
+    build:
+      context: .
+      target: production
+    image: wish-card-client
+    container_name: wish-card-client
+    volumes:
+      - .:/wish-cards
+      - /wish-cards/node_modules
+    stdin_open: true
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+    depends_on:
+      - server
+    ports:
+      - "4000:4000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
