@@ -4,9 +4,9 @@ FROM node:14-alpine as stage
 
 
 ENV APP_DIR=/wish-cards/
-WORKDIR ${APP_DIR}
-COPY yarn.lock ${APP_DIR}
-COPY package*.json ${APP_DIR}
+WORKDIR /wish-cards/
+COPY yarn.lock /wish-cards/
+COPY package*.json /wish-cards/
 RUN npm install
 EXPOSE 4000
 
@@ -16,6 +16,6 @@ CMD ["npm","start"]
 
 FROM stage as production
 ENV NODE_ENV=production
-COPY . ${APP_DIR}
+COPY . /wish-cards/
 RUN yarn build
 CMD node app.js
